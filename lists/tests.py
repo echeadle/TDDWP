@@ -3,7 +3,7 @@ from django.core.urlresolvers import resolve
 from django.test import TestCase
 from django.http import HttpRequest
 from lists.views import home_page
-from lists.models import item
+from lists.models import Item
 
 # Create your tests here.
 
