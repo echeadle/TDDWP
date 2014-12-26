@@ -1,8 +1,8 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import unittest
 
-class NewVisiterTest(unittest.TestCase):
+class NewVisiterTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -19,7 +19,7 @@ class NewVisiterTest(unittest.TestCase):
     def test_can_start_a_list_and_retrive_it_later(self):
         #Edith has heard about a new online to-do app.
         # She goes to check out it's home page.
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # She notices the the page title and header metions to-do lists.
         self.assertIn('To-Do', self.browser.title)
@@ -69,6 +69,3 @@ class NewVisiterTest(unittest.TestCase):
         # She visits that URL - her to-do list is still there.
 
         #Satisfied, she goes back to sleep.
-
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
