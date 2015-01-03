@@ -1,9 +1,9 @@
-from django.contrib.staticfiles.testing import StaticLiveServerCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys
 
-class NewVisiterTest(StaticLiveServerCase):
+class NewVisiterTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -86,7 +86,7 @@ class NewVisiterTest(StaticLiveServerCase):
         # Again, there is no trace of Edith's list
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
-        self.assertNotIn('Buy milk', page_text)
+        self.assertIn('Buy milk', page_text)
         # Satisfied, they both go back to sleep.
 
     def test_layout_and_styling(self):
